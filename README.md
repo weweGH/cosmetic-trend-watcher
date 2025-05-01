@@ -28,7 +28,7 @@ This tool helps cosmetic marketers, researchers, and data analysts stay ahead of
 ---
 
 ## 🗂️ Project Structure
-
+```
 cosmetic-trend-watcher/ 
 │ 
 ├─ data/ # Collected raw & processed data 
@@ -38,6 +38,7 @@ cosmetic-trend-watcher/
 ├─ analyze_comments.py # Keyword + sentiment analysis 
 ├─ generate_report.py # Report generator (MD → HTML) 
 └─ requirements.txt # Python dependencies
+```
 
 ---
 
