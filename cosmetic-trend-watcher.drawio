@@ -4,8 +4,61 @@
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
-        <mxCell id="edVHMNTKSAgnV6fekKzc-1" value="" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
-          <mxGeometry x="350" y="350" width="120" height="60" as="geometry" />
+        <mxCell id="edVHMNTKSAgnV6fekKzc-3" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="edVHMNTKSAgnV6fekKzc-1" target="edVHMNTKSAgnV6fekKzc-2">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edVHMNTKSAgnV6fekKzc-4" value="search&lt;div&gt;query = &#39;파운데이션&#39;&lt;/div&gt;" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="edVHMNTKSAgnV6fekKzc-3">
+          <mxGeometry x="-0.1" y="-1" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="edVHMNTKSAgnV6fekKzc-1" value="Youtube" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="120" y="120" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="edVHMNTKSAgnV6fekKzc-2" value="video_id" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="440" y="120" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="edVHMNTKSAgnV6fekKzc-8" value="likes" style="ellipse;shape=cloud;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="660" y="20" width="120" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="edVHMNTKSAgnV6fekKzc-9" value="commets" style="ellipse;shape=cloud;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="660" y="110" width="120" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="edVHMNTKSAgnV6fekKzc-10" value="view count" style="ellipse;shape=cloud;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="660" y="210" width="120" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="edVHMNTKSAgnV6fekKzc-11" value="" style="endArrow=none;html=1;rounded=0;entryX=0.16;entryY=0.55;entryDx=0;entryDy=0;entryPerimeter=0;exitX=1;exitY=0.5;exitDx=0;exitDy=0;" edge="1" parent="1" source="edVHMNTKSAgnV6fekKzc-2" target="edVHMNTKSAgnV6fekKzc-8">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="620" y="410" as="sourcePoint" />
+            <mxPoint x="670" y="360" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="edVHMNTKSAgnV6fekKzc-12" value="" style="endArrow=none;html=1;rounded=0;entryX=0.16;entryY=0.55;entryDx=0;entryDy=0;entryPerimeter=0;exitX=1;exitY=0.5;exitDx=0;exitDy=0;" edge="1" parent="1" source="edVHMNTKSAgnV6fekKzc-2" target="edVHMNTKSAgnV6fekKzc-9">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="570" y="160" as="sourcePoint" />
+            <mxPoint x="619" y="94" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="edVHMNTKSAgnV6fekKzc-13" value="" style="endArrow=none;html=1;rounded=0;entryX=0.16;entryY=0.55;entryDx=0;entryDy=0;entryPerimeter=0;exitX=1;exitY=0.5;exitDx=0;exitDy=0;" edge="1" parent="1" source="edVHMNTKSAgnV6fekKzc-2" target="edVHMNTKSAgnV6fekKzc-10">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="570" y="160" as="sourcePoint" />
+            <mxPoint x="619" y="174" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="edVHMNTKSAgnV6fekKzc-16" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="edVHMNTKSAgnV6fekKzc-14" target="edVHMNTKSAgnV6fekKzc-15">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edVHMNTKSAgnV6fekKzc-14" value="Youtube" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="330" y="450" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="edVHMNTKSAgnV6fekKzc-18" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="edVHMNTKSAgnV6fekKzc-15" target="edVHMNTKSAgnV6fekKzc-17">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edVHMNTKSAgnV6fekKzc-15" value="Slack API" style="shape=hexagon;perimeter=hexagonPerimeter2;whiteSpace=wrap;html=1;fixedSize=1;" vertex="1" parent="1">
+          <mxGeometry x="520" y="440" width="120" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="edVHMNTKSAgnV6fekKzc-17" value="분석 리포트,&lt;div&gt;요약 내용 전달&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="680" y="450" width="120" height="60" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>
