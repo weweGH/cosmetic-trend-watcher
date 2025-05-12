@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>화장품 트렌드 분석</title>
+    <style>
+        body { font-family: 'Arial', sans-serif; margin: 40px; }
+        h1 { color: #e91e63; }
+        h2 { margin-top: 40px; }
+        table {
+            width: 100%; border-collapse: collapse; margin-top: 20px;
+        }
+        th, td {
+            border: 1px solid #ddd; padding: 8px; text-align: left;
+        }
+        th {
+            background-color: #f06292; color: white;
+        }
+        img {
+            max-width: 100%; height: auto; margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>화장품 트렌드 분석</h1>
+    <p>본 리포트는 "메이크업" 키워드를 기반으로 한 유튜브 인기 동영상과 사용자 댓글 분석 결과를 제공합니다.</p>
+
+    <h2>1. 메이크업 관련 인기 동영상 TOP 5</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>순위</th>
+                <th>제목</th>
+                <th>채널명</th>
+                <th>조회수</th>
+                <th>링크</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for video in videos %}
+            <tr>
+                <td>{{ loop.index }}</td>
+                <td>{{ video.title }}</td>
+                <td>{{ video.channel }}</td>
+                <td>{{ video.views }}</td>
+                <td><a href="https://www.youtube.com/watch?v={{ video.video_id }}" target="_blank">보기</a></td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <h2>2. 인기 동영상 댓글 기반 워드클라우드</h2>
+    <p>아래는 TOP 5 동영상의 댓글을 기반으로 생성한 워드클라우드입니다.</p>
+    <img src="{{ wordcloud_path }}" alt="댓글 워드클라우드 이미지">
+
+</body>
+</html>
