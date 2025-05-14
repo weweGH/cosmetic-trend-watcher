@@ -7,7 +7,7 @@ import matplotlib.font_manager as fm
 import pandas as pd
 from dotenv import load_dotenv
 import platform
-
+import datetime
 
 # === [1] API 키 설정 ===
 
@@ -31,12 +31,13 @@ plt.rcParams['axes.unicode_minus'] = False
 
 
 # # === [3] 영상 검색 함수 ===
-def search_youtube_videos(query, max_results=3):
+def search_youtube_videos(query, max_results):
     request = youtube.search().list(
         q=query,
         part="snippet",
         maxResults=max_results,
-        type="video"
+        type="video",
+        order="viewCount" # 인기순
     )
     response = request.execute()
     videos = []
@@ -86,32 +87,11 @@ def get_video_stats(video_id):
         "comments": int(stats.get("commentCount", 0))
     }
 
-
-# === [6] 워드클라우드 생성 ===
-
-def make_wordcloud(text, keyword):
-    wordcloud = WordCloud(
-        font_path=font_path,
-        background_color="white",
-        width=800,
-        height=400
-    ).generate(text)
-
-    output_path = f"reports/wordcloud_{keyword}.png"
-    plt.figure(figsize=(10, 5))
-    plt.imshow(wordcloud, interpolation="bilinear")
-    plt.axis("off")
-    plt.title(f"{keyword} 유튜브 댓글 워드클라우드")
-    plt.savefig(output_path)
-    plt.close()
-    return output_path
-
-
 # === [7] 메인 실행 ===
 
 def main(keyword):
     print(f"🔍 검색어: {keyword}")
-    videos = search_youtube_videos(keyword, max_results=3)
+    videos = search_youtube_videos(keyword, 3)
 
     results = []
     all_comments = []
@@ -129,7 +109,7 @@ def main(keyword):
 
     df = pd.DataFrame(results)
     os.makedirs("data", exist_ok=True)
-    output_path = f"data/yt_data_{keyword}.csv"
+    output_path = f"rawdata/videos/youtube_{keyword}_{datetime.datetime.now().strftime('%Y%m%d')}.csv"
     df.to_csv(output_path, index=False, encoding="utf-8-sig")
     print(f"\n✅ 수집 완료! 데이터 저장: {output_path}")
 
@@ -151,21 +131,24 @@ def main(keyword):
             })
 
     comment_df = pd.DataFrame(comment_rows)
-    comment_path = f"data/comments_{keyword}.csv"
+    comment_path = f"rawdata/comments/comments_{keyword}_{datetime.datetime.now().strftime('%Y%m%d')}.csv"
     comment_df.to_csv(comment_path, index=False, encoding="utf-8-sig")
     print(f"✅ 댓글 데이터 저장: {comment_path}")
-
-    # 워드클라우드 생성
-    total_text = " ".join(comment_df['comment'].tolist())
-    wc_path = make_wordcloud(total_text, keyword)
-    print(f"✅ 워드클라우드 저장: {wc_path}")
 
 
 
 # === [8] CLI 인자 파싱 ===
 
+# if __name__ == "__main__":
+#     parser = argparse.ArgumentParser(description="YouTube cosmetics crawler")
+#     parser.add_argument("--keyword", type=str, required=True, help="검색할 키워드")
+#     args = parser.parse_args()
+#     main(args.keyword)
+
 if __name__ == "__main__":
-    parser = argparse.ArgumentParser(description="YouTube cosmetics crawler")
-    parser.add_argument("--keyword", type=str, required=True, help="검색할 키워드")
-    args = parser.parse_args()
-    main(args.keyword)
+
+    keywords = ['파운데이션', '틴트', '메이크업'] 
+
+    for KeyWord in keywords:
+
+        main(KeyWord)
