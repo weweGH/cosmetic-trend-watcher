@@ -2,16 +2,16 @@
 <html lang="ko">
 <head>
     <meta charset="UTF-8">
-    <title>화장품 트렌드 분석</title>
+    <title>화장품 트렌드 리포트</title>
     <style>
-        body { font-family: 'Arial', sans-serif; margin: 40px; }
+        body { font-family: 'Arial', sans-serif; margin: 40px; line-height: 1.6; }
         h1 { color: #e91e63; }
-        h2 { margin-top: 40px; }
+        h2 { margin-top: 50px; color: #d81b60; }
         table {
             width: 100%; border-collapse: collapse; margin-top: 20px;
         }
         th, td {
-            border: 1px solid #ddd; padding: 8px; text-align: left;
+            border: 1px solid #ddd; padding: 8px; text-align: center;
         }
         th {
             background-color: #f06292; color: white;
@@ -19,14 +19,26 @@
         img {
             max-width: 100%; height: auto; margin-top: 20px;
         }
+        .meta {
+            font-size: 0.9em; color: #555;
+        }
+        .section-divider {
+            border-top: 3px solid #f8bbd0; margin-top: 60px;
+        }
     </style>
 </head>
 <body>
 
-    <h1>화장품 트렌드 분석</h1>
-    <p>본 리포트는 "메이크업" 키워드를 기반으로 한 유튜브 인기 동영상과 사용자 댓글 분석 결과를 제공합니다.</p>
+    <h1>화장품 트렌드 종합 리포트</h1>
+    <p class="meta">리포트 생성일: {{ report_date }} | 분석 키워드 수: {{ keyword_sections|length }}</p>
+    <p>이 리포트는 유튜브에서 화장품 관련 키워드를 기반으로 한 인기 동영상과 댓글을 분석한 결과를 담고 있습니다. 키워드별로 인기 영상 요약과 댓글 워드클라우드를 제공합니다.</p>
 
-    <h2>1. 메이크업 관련 인기 동영상 TOP 5</h2>
+    {% for section in keyword_sections %}
+    <div class="section-divider"></div>
+    <h2>💄 키워드: "{{ section.keyword }}"</h2>
+    <p class="meta">수집일: {{ section.date }} | 영상 수: {{ section.videos|length }}개</p>
+
+    <h3>1. 인기 동영상 요약</h3>
     <table>
         <thead>
             <tr>
@@ -34,25 +46,30 @@
                 <th>제목</th>
                 <th>채널명</th>
                 <th>조회수</th>
+                <th>좋아요</th>
+                <th>댓글 수</th>
                 <th>링크</th>
             </tr>
         </thead>
         <tbody>
-            {% for video in videos %}
+            {% for video in section.videos %}
             <tr>
                 <td>{{ loop.index }}</td>
                 <td>{{ video.title }}</td>
                 <td>{{ video.channel }}</td>
-                <td>{{ video.views }}</td>
+                <td>{{ "{:,}".format(video.views) }}</td>
+                <td>{{ "{:,}".format(video.likes) }}</td>
+                <td>{{ "{:,}".format(video.comments) }}</td>
                 <td><a href="https://www.youtube.com/watch?v={{ video.video_id }}" target="_blank">보기</a></td>
             </tr>
             {% endfor %}
         </tbody>
     </table>
 
-    <h2>2. 인기 동영상 댓글 기반 워드클라우드</h2>
-    <p>아래는 TOP 5 동영상의 댓글을 기반으로 생성한 워드클라우드입니다.</p>
-    <img src="{{ wordcloud_path }}" alt="댓글 워드클라우드 이미지">
+    <h3>2. 댓글 기반 워드클라우드</h3>
+    <img src="{{ section.wordcloud_path }}" alt="{{ section.keyword }} 워드클라우드">
+
+    {% endfor %}
 
 </body>
 </html>

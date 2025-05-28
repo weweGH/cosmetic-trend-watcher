@@ -31,6 +31,7 @@ plt.rcParams['axes.unicode_minus'] = False
 
 
 # # === [3] 영상 검색 함수 ===
+
 def search_youtube_videos(query, max_results):
     request = youtube.search().list(
         q=query,
@@ -147,7 +148,7 @@ def main(keyword):
 
 if __name__ == "__main__":
 
-    keywords = ['파운데이션', '틴트', '메이크업'] 
+    keywords = ['파운데이션', '틴트', '메이크업', 'kbeauty'] 
 
     for KeyWord in keywords:
 
